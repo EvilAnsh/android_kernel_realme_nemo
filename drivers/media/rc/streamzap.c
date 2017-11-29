@@ -191,8 +191,15 @@ static void sz_push_half_space(struct streamzap_ir *sz,
 	sz_push_full_space(sz, value & SZ_SPACE_MASK);
 }
 
-static void sz_process_ir_data(struct streamzap_ir *sz, int len)
+/*
+ * streamzap_callback - usb IRQ handler callback
+ *
+ * This procedure is invoked on reception of data from
+ * the usb remote.
+ */
+static void streamzap_callback(struct urb *urb)
 {
+	struct streamzap_ir *sz;
 	unsigned int i;
 
 	for (i = 0; i < len; i++) {
@@ -329,7 +336,7 @@ out:
 	return NULL;
 }
 
-/**
+/*
  *	streamzap_probe
  *
  *	Called by usb-core to associated with a candidate device
@@ -458,7 +465,7 @@ free_sz:
 	return retval;
 }
 
-/**
+/*
  * streamzap_disconnect
  *
  * Called by the usb core when the device is removed from the system.
