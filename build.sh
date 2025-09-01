@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function compile() 
+function compile()
 {
 rm -rf AnyKernel
 source ~/.bashrc && source ~/.profile
@@ -13,7 +13,7 @@ fi
 
 [ -d "out" ] && rm -rf out || mkdir -p out
 
-make O=out ARCH=arm64 RM6785_defconfig
+make O=out ARCH=arm64 nemo_defconfig
 
 PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
