@@ -11,8 +11,6 @@ if [ ! -d "clang" ]; then
     git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r547379.git clang --depth=1
 fi
 
-[ -d "out" ] && rm -rf out || mkdir -p out
-
 make O=out ARCH=arm64 nemo_defconfig
 
 PATH="${PWD}/clang/bin:${PATH}" \
