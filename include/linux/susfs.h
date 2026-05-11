@@ -217,11 +217,6 @@ void susfs_update_sus_kstat(void __user **user_info);
 void susfs_generic_fillattr_spoofer(struct inode *inode, struct kstat *stat);
 void susfs_show_map_vma_spoofer(struct inode *inode, dev_t *out_dev, unsigned long *out_ino);
 #endif
-/* try_umount */
-#ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
-void susfs_add_try_umount(void __user **user_info);
-void susfs_try_umount(uid_t uid);
-#endif // #ifdef CONFIG_KSU_SUSFS_TRY_UMOUNT
 
 /* spoof_uname */
 #ifdef CONFIG_KSU_SUSFS_SPOOF_UNAME
